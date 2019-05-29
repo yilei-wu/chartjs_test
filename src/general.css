@@ -8,3 +8,18 @@
     background-color: aliceblue;
     padding: 10px;
 }
+
+.search_bar {
+    position: relative;
+    padding: 20px;
+}
+
+.hashtag_card {
+    max-width: 20%;
+    margin: 10px;
+}
+
+.hashtag_body {
+    position: relative;
+    margin: auto;
+}

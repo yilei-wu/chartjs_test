@@ -91,14 +91,25 @@ function f() {
 
 }
 
+let hashtag_container = $('<div class="card text-white bg-primary hashtag_card col-sm-2">\n' +
+    '            <div class="card-body hashtag_body">\n' +
+    '                <h5 class="card-title" id="name"></h5>\n' +
+    '                <h5 class="card-text" id="count"></h5>\n' +
+    '            </div>\n' +
+    '        </div>');
+
 function updateGraph(dat) {
-    var data = JSON.parse(dat)
+    var data = JSON.parse(dat);
     let hashtagName = [];
     let hashtagCnt = [];
     console.log(data);
     for (var i = 0; i < data[0].length; i++){
+        let current = hashtag_container.clone();
+        current.find('#name').text(data[0][i]["tag"]);
+        current.find('#count').text(data[0][i]["count"]);
         hashtagName.push(data[0][i]["tag"]);
         hashtagCnt.push(data[0][i]["count"]);
+        $('#hashtags').append(current);
     }
 
 
@@ -137,10 +148,11 @@ function updateGraph(dat) {
     });
 }
 
-var test = [[{"tag":"happy","count":4},{"tag":"HumpDay","count":2},{"tag":"tonight","count":2},{"tag":"bestfriends","count":2},{"tag":"GoldenGlobes","count":2},{"tag":"usa","count":2},{"tag":"Dems","count":2},{"tag":"Repost","count":2},{"tag":"GoPackGo","count":1},{"tag":"Bengals50","count":1}]]
+var test = '[[{"tag":"happy","count":4},{"tag":"HumpDay","count":2},{"tag":"tonight","count":2},{"tag":"bestfriends","count":2},{"tag":"GoldenGlobes","count":2},{"tag":"usa","count":2},{"tag":"Dems","count":2},{"tag":"Repost","count":2},{"tag":"GoPackGo","count":1},{"tag":"Bengals50","count":1}]]';
 
 $(function () {
-    f();
+    // f();
+    updateGraph(test);
 });
 
 
