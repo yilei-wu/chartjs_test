@@ -88,10 +88,7 @@ function f() {
     ws.onclose = function (ev) {
         console.log("CLOSING")
     }
-    // ws.onmessage = function (event) {
-    //     document.getElementById("text").value = event.data;
-    //     console.log(event.data);
-    // }
+
 }
 
 function updateGraph(dat) {
@@ -140,7 +137,7 @@ function updateGraph(dat) {
     });
 }
 
-
+var test = [[{"tag":"happy","count":4},{"tag":"HumpDay","count":2},{"tag":"tonight","count":2},{"tag":"bestfriends","count":2},{"tag":"GoldenGlobes","count":2},{"tag":"usa","count":2},{"tag":"Dems","count":2},{"tag":"Repost","count":2},{"tag":"GoPackGo","count":1},{"tag":"Bengals50","count":1}]]
 
 $(function () {
     f();
