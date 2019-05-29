@@ -1,0 +1,10 @@
+.chart-container {
+    position: relative;
+    height:40%;
+    width:80vw;
+    margin: auto;
+    /*width: 50%;*/
+    /*border: 3px solid green;*/
+    background-color: aliceblue;
+    padding: 10px;
+}
