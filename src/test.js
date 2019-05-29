@@ -155,6 +155,8 @@ $(function () {
     updateGraph(test);
 });
 
-
-
 var terminal_query = "curl -H \"Content-Type: application/json\" --data @test.json http://localhost:9000/berry"
+
+function keyworkd_search() {
+    
+}
