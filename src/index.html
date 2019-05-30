@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <title>Demo</title>
 
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"
             integrity="sha256-xKeoJ50pzbUGkpQxDYHD7o7hxe0LaOGeguUidbq6vis=" crossorigin="anonymous"></script>
     <script src="test.js"></script>
@@ -14,13 +13,13 @@
 </head>
 <body>
 
-<form>
+<form id="search_form">
     <div class="container">
         <div class="row">
             <div class="col-sm-3"></div>
             <div class="col-sm-6 search_bar">
                 <div class="form-group input-group">
-                    <label for="search_bar" id = "search_bar"></label><input type="text" class="form-control" placeholder="Search">
+                    <input name="word" type="text" class="form-control" placeholder="Search">
                     <div class="input-group-append">
                         <button class="btn btn-primary" type="submit" id="button-addon2">Search</button>
                     </div>

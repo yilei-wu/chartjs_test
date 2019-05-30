@@ -42,11 +42,12 @@
 
 
 
-function f() {
+function f(keyword) {
     // language=JQuery-CSS
-    var keyword = document.getElementById("search_bar").value;
+    // var keyword = document.getElementById("search_bar").value;
+    // var keyword = word;
 
-    console.log(keyword)
+    console.log(keyword);
 
     var ws = new WebSocket("ws://localhost:9000/ws");
     var data = {
@@ -156,8 +157,12 @@ function updateGraph(dat) {
 var test = '[[{"tag":"happy","count":4},{"tag":"HumpDay","count":2},{"tag":"tonight","count":2},{"tag":"bestfriends","count":2},{"tag":"GoldenGlobes","count":2},{"tag":"usa","count":2},{"tag":"Dems","count":2},{"tag":"Repost","count":2},{"tag":"GoPackGo","count":1},{"tag":"Bengals50","count":1}]]';
 
 $(function () {
-    f();
-    //updateGraph(test);
+    $('#search_form').submit(function (event) {
+        event.preventDefault();
+        let data = $('#search_form').serialize();
+        let urlParams = new URLSearchParams(data);
+        f(urlParams.get('word'))
+    });
 });
 
 var terminal_query = "curl -H \"Content-Type: application/json\" --data @test.json http://localhost:9000/berry"
