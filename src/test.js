@@ -43,6 +43,11 @@
 
 
 function f() {
+    // language=JQuery-CSS
+    var keyword = document.getElementById("search_bar").value;
+
+    console.log(keyword)
+
     var ws = new WebSocket("ws://localhost:9000/ws");
     var data = {
         "dataset": "twitter.ds_tweet",
@@ -50,7 +55,7 @@ function f() {
             {
                 "field": "text",
                 "relation": "contains",
-                "values": ["happy"]
+                "values": [keyword]
             }
         ],
         "unnest": [{"hashtags": "tag"}],
@@ -151,8 +156,8 @@ function updateGraph(dat) {
 var test = '[[{"tag":"happy","count":4},{"tag":"HumpDay","count":2},{"tag":"tonight","count":2},{"tag":"bestfriends","count":2},{"tag":"GoldenGlobes","count":2},{"tag":"usa","count":2},{"tag":"Dems","count":2},{"tag":"Repost","count":2},{"tag":"GoPackGo","count":1},{"tag":"Bengals50","count":1}]]';
 
 $(function () {
-    // f();
-    updateGraph(test);
+    f();
+    //updateGraph(test);
 });
 
 var terminal_query = "curl -H \"Content-Type: application/json\" --data @test.json http://localhost:9000/berry"
