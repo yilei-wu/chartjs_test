@@ -104,6 +104,15 @@ let hashtag_container = $('<div class="card text-white bg-primary hashtag_card c
     '            </div>\n' +
     '        </div>');
 
+function getRandomColors(num) {
+    var result = [];
+    for (var i = 0; i < num; ++i) {
+        result.push('#'+(0x1000000+(Math.random())*0xffffff).toString(16).substr(1,6));
+    }
+    console.log(result);
+    return result;
+}
+
 function updateGraph(dat) {
     var data = JSON.parse(dat);
     let hashtagName = [];
@@ -120,8 +129,9 @@ function updateGraph(dat) {
 
 
 
-    let canvas = $('#demo');
-    var chart = new Chart(canvas, {
+    let histogramCanvas = $('#histogram_canvas');
+    let pieCanvas = $('#pie_canvas');
+    var hisChart = new Chart(histogramCanvas, {
         // The type of chart we want to create
         type: 'bar',
 
@@ -152,6 +162,25 @@ function updateGraph(dat) {
             }
         }
     });
+
+    var pieChart = new Chart(pieCanvas, {
+        type: 'pie',
+        data: {
+            labels: hashtagName,
+            datasets: [{
+                label: 'number',
+                data: hashtagCnt,
+                backgroundColor: getRandomColors(hashtagCnt.length)
+            }]
+        },
+        options: {
+            title: {
+                display: true,
+                text: 'Test Pie Chart',
+                fontSize: 20
+            }
+        }
+    });
 }
 
 var test = '[[{"tag":"happy","count":4},{"tag":"HumpDay","count":2},{"tag":"tonight","count":2},{"tag":"bestfriends","count":2},{"tag":"GoldenGlobes","count":2},{"tag":"usa","count":2},{"tag":"Dems","count":2},{"tag":"Repost","count":2},{"tag":"GoPackGo","count":1},{"tag":"Bengals50","count":1}]]';
@@ -163,6 +192,7 @@ $(function () {
         let urlParams = new URLSearchParams(data);
         f(urlParams.get('word'))
     });
+    updateGraph(test);
 });
 
 var terminal_query = "curl -H \"Content-Type: application/json\" --data @test.json http://localhost:9000/berry"

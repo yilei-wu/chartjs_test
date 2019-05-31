@@ -9,6 +9,12 @@
     padding: 10px;
 }
 
+.divider {
+    /*position: relative;*/
+    margin: 10px;
+    padding: 10px;
+}
+
 .search_bar {
     position: relative;
     padding: 20px;
